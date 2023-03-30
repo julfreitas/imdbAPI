@@ -23,12 +23,25 @@ public class App {
 
         // exibir e manipular os dados
         // exibir os 5 primeiros tops filmes
+        System.out.println();
+        System.out.println("Rating IMDb - Top Movies 🎬");
+        System.out.println();
         for (int i = 0; i < 5; i++) {
             Map<String, String> filme = listaDeFIlmes.get(i);
             System.out.println("\u001b[38;5;208;255;1mTítulo >> \u001b[m\u001b[4m" + filme.get("title") + "\u001b[m");
             System.out.println("\u001b[38;5;208;255;1mUser rating >> \u001b[m" + filme.get("imDbRating"));
-            System.out.println("\u001b[38;5;208;255mImagem >> \u001b[m" + filme.get("image"));
+            double classificacao = Double.parseDouble(filme.get("imDbRating"));
+            int numeroEstrelas = (int) classificacao;
+            for (int n = 1; n <= numeroEstrelas;  n++) {
+                System.out.print("⭐");
+    
+            }
             System.out.println();
+            System.out.println("\u001b[38;5;208;255mImagem >> \u001b[m" + filme.get("image"));
+            System.out.println("\n");
+            
+
+
         }
 
     }
