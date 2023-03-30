@@ -1,4 +1,4 @@
-<h1 align="center"> IMDb - Melhores Filmes </h1>
+<h1 align="center"> IMDb - Top MOvies 🎬 </h1>
 
 <h2 align="center"> Imersão Java - Alura </h2>
 
@@ -17,7 +17,6 @@ Evento exclusivo e gratuito, promovido pela Alura para ensino da linguagem JAVA.
 </p>
 
 <br>
-<h2 align="center"> Em desenvolvimento </h2>
 
 <p align="center">
   <img alt="print terminal" src=".github/preview.png" width="100%">
@@ -30,6 +29,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - JAVA
 - Json
 - Http
+- ANSI escape code (decorar o terminal com cores e emojis)
 
 Link para acessar a API do IMDb: [LINK](https://imdb-api.com/api).
 
