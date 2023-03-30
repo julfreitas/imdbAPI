@@ -17,9 +17,10 @@ Evento exclusivo e gratuito, promovido pela Alura para ensino da linguagem JAVA.
 </p>
 
 <br>
+<h2 align="center"> Em desenvolvimento </h2>
 
 <p align="center">
-  <img alt="calendário da copa" src=".github/preview.png" width="100%">
+  <img alt="print terminal" src=".github/preview.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
