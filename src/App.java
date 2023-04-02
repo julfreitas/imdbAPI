@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -22,22 +25,41 @@ public class App {
         List<Map<String, String>> listaDeFIlmes = parser.parse(body);
 
         // exibir e manipular os dados
-        // exibir os 5 primeiros tops filmes
         System.out.println();
         System.out.println("Rating IMDb - Top Movies 🎬");
         System.out.println();
+
+        //criando diretorio para armazenar figurinhas;
+        var diretorio = new File("assets/saidaStickers/");
+        diretorio.mkdir();
+        // exibir os 5 primeiros tops filmes
         for (int i = 0; i < 5; i++) {
             Map<String, String> filme = listaDeFIlmes.get(i);
-            System.out.println("\u001b[38;5;208;255;1mTítulo >> \u001b[m\u001b[4m" + filme.get("title") + "\u001b[m");
+            String titulo = filme.get("title");
+            System.out.println("\u001b[38;5;208;255;1mTítulo >> \u001b[m\u001b[4m" + titulo + "\u001b[m");
+
+            //adicionando emoji estrela
             System.out.println("\u001b[38;5;208;255;1mUser rating >> \u001b[m" + filme.get("imDbRating"));
             double classificacao = Double.parseDouble(filme.get("imDbRating"));
-            int numeroEstrelas = (int) classificacao;
+            int numeroEstrelas = (int) classificacao; // classificacao para inteiro, com isso é possivel printar uma quantidade de emojis de acordo de como ficou a classificacao em inteiro
             for (int n = 1; n <= numeroEstrelas;  n++) {
                 System.out.print("⭐");
     
             }
             System.out.println();
-            System.out.println("\u001b[38;5;208;255mImagem >> \u001b[m" + filme.get("image"));
+
+            String urlImagem = filme.get("image");
+            System.out.println("\u001b[38;5;208;255mImagem >> \u001b[m" + urlImagem);
+            
+            
+            
+            InputStream inputStream = new URL(urlImagem).openStream();
+            String nomeArquivo = "assets/saidaStickers/" + titulo + ".png"; //para a figurinha criada ficar com o nome do título e em formato png
+
+            var geradora = new GeradorDeFigurinhas();
+            geradora.cria((inputStream), nomeArquivo); //chamando método cria 
+
+            System.out.println();
             System.out.println("\n");
             
 
