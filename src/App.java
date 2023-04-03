@@ -29,7 +29,7 @@ public class App {
         System.out.println("Rating IMDb - Top Movies 🎬");
         System.out.println();
 
-        //criando diretorio para armazenar figurinhas;
+        // criando diretorio para armazenar figurinhas;
         var diretorio = new File("assets/saidaStickers/");
         diretorio.mkdir();
         // exibir os 5 primeiros tops filmes
@@ -38,31 +38,38 @@ public class App {
             String titulo = filme.get("title");
             System.out.println("\u001b[38;5;208;255;1mTítulo >> \u001b[m\u001b[4m" + titulo + "\u001b[m");
 
-            //adicionando emoji estrela
+            // adicionando emoji estrela
             System.out.println("\u001b[38;5;208;255;1mUser rating >> \u001b[m" + filme.get("imDbRating"));
             double classificacao = Double.parseDouble(filme.get("imDbRating"));
-            int numeroEstrelas = (int) classificacao; // classificacao para inteiro, com isso é possivel printar uma quantidade de emojis de acordo de como ficou a classificacao em inteiro
-            for (int n = 1; n <= numeroEstrelas;  n++) {
+            int numeroEstrelas = (int) classificacao; // classificacao para inteiro, com isso é possivel printar uma
+                                                      // quantidade de emojis de acordo de como ficou a classificacao em
+                                                      // inteiro
+            for (int n = 1; n <= numeroEstrelas; n++) {
                 System.out.print("⭐");
-    
+
             }
             System.out.println();
 
             String urlImagem = filme.get("image");
             System.out.println("\u001b[38;5;208;255mImagem >> \u001b[m" + urlImagem);
-            
-            
-            
+
             InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = "assets/saidaStickers/" + titulo + ".png"; //para a figurinha criada ficar com o nome do título e em formato png
+            String nomeArquivo = "assets/saidaStickers/" + titulo + ".png"; // para a figurinha criada ficar com o nome
+                                                                            // do título e em formato png
+            
+            //texto da figurinha aparecer de acordo com a classificação do IMDb                                                             
+            String textoFigurinha;
+            if (classificacao >= 8.0) {
+                textoFigurinha = "TOP!!!🔝";
+            }else {
+                textoFigurinha = "HMMMM....🫣";
+            }
 
             var geradora = new GeradorDeFigurinhas();
-            geradora.cria((inputStream), nomeArquivo); //chamando método cria 
+            geradora.cria((inputStream), nomeArquivo, textoFigurinha); // chamando método cria
 
             System.out.println();
             System.out.println("\n");
-            
-
 
         }
 
